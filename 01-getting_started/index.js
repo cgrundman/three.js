@@ -16,7 +16,7 @@ const scene = new THREE.Scene();
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = 0.03;
+controls.dampingFactor = 0.04;
 
 const geo = new THREE.IcosahedronGeometry(0.9, 2);
 const mat = new THREE.MeshStandardMaterial({
