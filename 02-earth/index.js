@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { OrbitControls } from "jsm/controls/OrbitControls.js"
 
 console.log(`THREE REVISION: %c${THREE.REVISION}`,"color: #FFFF00")
 window.THREE = THREE;
@@ -7,24 +8,27 @@ const h = window.innerHeight;
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
 camera.position.z = 5;
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ antialias: true});
 renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
 
-const geometry = new THREE.BoxGeometry();
+new OrbitControls(camera, renderer.domElement);
+
+const geometry = new THREE.IcosahedronGeometry(1, 12);
 const material = new THREE.MeshPhongMaterial({
   color: 0xffff00,
+  // flatShading: true,
 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+const earthMesh = new THREE.Mesh(geometry, material);
+scene.add(earthMesh);
 
 const hemiLight = new THREE.HemisphereLight(0x000000, 0xffffff)
 scene.add(hemiLight);
 function animate() {
   requestAnimationFrame(animate);
 
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.02;
+  earthMesh.rotation.x += 0.001;
+  earthMesh.rotation.y += 0.002;
   renderer.render(scene, camera);
 }
 
