@@ -13,16 +13,15 @@ renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
 
 new OrbitControls(camera, renderer.domElement);
-
+const loader = new THREE.TextureLoader();
 const geometry = new THREE.IcosahedronGeometry(1, 12);
 const material = new THREE.MeshPhongMaterial({
-  color: 0xffff00,
-  // flatShading: true,
+  map: loader.load("textures/earthmap1k.jpg")
 });
 const earthMesh = new THREE.Mesh(geometry, material);
 scene.add(earthMesh);
 
-const hemiLight = new THREE.HemisphereLight(0x000000, 0xffffff)
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000)
 scene.add(hemiLight);
 function animate() {
   requestAnimationFrame(animate);
