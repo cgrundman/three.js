@@ -29,10 +29,21 @@ earthGroup.add(earthMesh);
 const lightsMat = new THREE.MeshBasicMaterial({
   map: loader.load("textures/earthlights1k.jpg"),
   blending: THREE.AdditiveBlending,
+  transparent: true,
+  opacity: 0.3,
 })
 const lightsMesh = new THREE.Mesh(geometry, lightsMat)
 earthGroup.add(lightsMesh)
 
+const cloudsMat = new THREE.MeshStandardMaterial({
+  map: loader.load("textures/earthcloudmap.jpg"),
+  transparent: true,
+  opacity: 0.15,
+  blending: THREE.AdditiveBlending
+})
+const cloudsMesh = new THREE.Mesh(geometry, cloudsMat);
+cloudsMesh.scale.setScalar(1.003)
+earthGroup.add(cloudsMesh);
 
 const stars = getStarfield({ numStars: 2000 });
 scene.add(stars)
@@ -47,6 +58,7 @@ function animate() {
 
   earthMesh.rotation.y += 0.002;
   lightsMesh.rotation.y += 0.002;
+  cloudsMesh.rotation.y += 0.002;
   renderer.render(scene, camera);
 }
 
