@@ -40,7 +40,7 @@ earthGroup.add(lightsMesh)
 const cloudsMat = new THREE.MeshStandardMaterial({
   map: loader.load("textures/earthcloudmap.jpg"),
   transparent: true,
-  opacity: 0.8,
+  opacity: 0.4,
   blending: THREE.AdditiveBlending
 })
 const cloudsMesh = new THREE.Mesh(geometry, cloudsMat);
@@ -66,7 +66,7 @@ function animate() {
 
   earthMesh.rotation.y += 0.002;
   lightsMesh.rotation.y += 0.002;
-  cloudsMesh.rotation.y += 0.0025;
+  cloudsMesh.rotation.y += 0.0023;
   glowMesh.rotation.y += 0.002;
   renderer.render(scene, camera);
 }
