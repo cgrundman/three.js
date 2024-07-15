@@ -5,6 +5,7 @@ import spline from "./spline.js";
 const w = window.innerWidth;
 const h = window.innerHeight;
 const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x000000, 0.3)
 const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
 camera.position.z = 5;
 const renderer = new THREE.WebGLRenderer();
@@ -23,16 +24,21 @@ const material = new THREE.LineBasicMaterial({ color: 0xffffff });
 const line = new THREE.Line(geometry, material);
 
 const tubeGeo = new THREE.TubeGeometry(spline, 222, 0.65, 16, true);
-const tubeMat = new THREE.MeshStandardMaterial({
+const tubeMat = new THREE.MeshBasicMaterial({
     color: 0xffffff,
-    side: THREE.DoubleSide,
+    // side: THREE.DoubleSide,
     wireframe: true,
 })
 const tube = new THREE.Mesh(tubeGeo, tubeMat);
-scene.add(tube);
+// scene.add(tube);
 
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
-scene.add(hemiLight);
+const edges = new THREE.EdgesGeometry(tubeGeo, 0.2);
+const lineMat = new THREE.LineBasicMaterial({ color: 0xfffffff });
+const tubeLines = new THREE.LineSegments(edges, lineMat)
+scene.add(tubeLines);
+
+// const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
+// scene.add(hemiLight);
 
 function updateCamera(t) {
     const time = t * 0.2;
