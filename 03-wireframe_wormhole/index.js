@@ -24,16 +24,6 @@ scene.add(cube);
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
 scene.add(hemiLight);
 
-const gradientBackground = getLayer({
-  hue: 0.5,
-  numSprites: 8,
-  opacity: 0.2,
-  radius: 10,
-  size: 24,
-  z: -15.5,
-});
-scene.add(gradientBackground);
-
 function animate() {
   requestAnimationFrame(animate);
   cube.rotation.x += 0.01;
