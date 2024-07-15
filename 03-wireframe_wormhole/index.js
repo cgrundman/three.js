@@ -37,8 +37,35 @@ const lineMat = new THREE.LineBasicMaterial({ color: 0xfffffff });
 const tubeLines = new THREE.LineSegments(edges, lineMat)
 scene.add(tubeLines);
 
-// const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
-// scene.add(hemiLight);
+// Create Boxes
+const numBoxes = 55;
+const size = 0.075;
+const boxGeo = new THREE.BoxGeometry(size, size, size);
+for (let i = 0; i < numBoxes; i+= 1) {
+    const boxMat = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        wireframe: true,
+    });
+    const box = new THREE.Mesh(boxGeo, boxMat);
+    const p = (i / numBoxes + Math.random() * 0.1) % 1;
+    const pos = tubeGeo.parameters.path.getPointAt(p);
+    pos.x += Math.random() - 0.4;
+    pos.z += Math.random() - 0.4;
+    box.position.copy(pos);
+    const rote = new THREE.Vector3(
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+    );
+    box.rotation.set(rote.x, rote.y, rote.z);
+    const edges = new THREE.EdgesGeometry(boxGeo, 0.2);
+    const lineMat = new THREE.LineBasicMaterial({ color: 0xffff00 });
+    const boxLines = new THREE.LineSegments(edges, lineMat)
+    boxLines.position.copy(pos);
+    boxLines.rotation.set(rote.x, rote.y, rote.z);
+    // scene.add(box);
+    scene.add(boxLines)
+}
 
 function updateCamera(t) {
     const time = t * 0.2;
