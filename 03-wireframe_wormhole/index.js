@@ -62,8 +62,8 @@ const size = 0.075;
 const boxGeo = new THREE.BoxGeometry(size, size, size);
 for (let i = 0; i < numBoxes; i+= 1) {
     const boxMat = new THREE.MeshBasicMaterial({
-        color: 0xffffff,
-        wireframe: true,
+        color: 0xff0000,
+        // wireframe: true,
     });
     const box = new THREE.Mesh(boxGeo, boxMat);
     const p = (i / numBoxes + Math.random() * 0.1) % 1;
@@ -79,11 +79,11 @@ for (let i = 0; i < numBoxes; i+= 1) {
     );
     box.rotation.set(rote.x, rote.y, rote.z);
     const edges = new THREE.EdgesGeometry(boxGeo, 0.2);
-    const lineMat = new THREE.LineBasicMaterial({ color: 0xff00000 });
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x000000 });
     const boxLines = new THREE.LineSegments(edges, lineMat)
     boxLines.position.copy(pos);
     boxLines.rotation.set(rote.x, rote.y, rote.z);
-    // scene.add(box);
+    scene.add(box);
     scene.add(boxLines)
 }
 
