@@ -56,35 +56,32 @@ tubeLines.linewidth = 5; // default is 1
 // tubeLines.scale.setScalar(1.01)
 scene.add(tubeLines);
 
-// Create Boxes
-const numBoxes = 500;
+// Create Blood Cells
+const numCells = 500;
 const size = 0.075;
-const boxGeo = new THREE.BoxGeometry(size, size, size);
-for (let i = 0; i < numBoxes; i+= 1) {
-    const boxMat = new THREE.MeshBasicMaterial({
-        color: 0xff0000,
-        // wireframe: true,
-    });
-    const box = new THREE.Mesh(boxGeo, boxMat);
-    const p = (i / numBoxes + Math.random() * 0.1) % 1;
+const bloodCellGeo = new THREE.TorusGeometry(size, 0.03, 10, 15);
+const bloodCellMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+for (let i = 0; i < numCells; i+= 1) {
+    const cell = new THREE.Mesh(bloodCellGeo, bloodCellMat);
+    const p = (i / numCells + Math.random() * 0.1) % 1;
     const pos = tubeGeo.parameters.path.getPointAt(p);
     pos.x += Math.random() - 0.35;
     pos.y += Math.random() - 0.35;
     pos.z += Math.random() - 0.35;
-    box.position.copy(pos);
+    cell.position.copy(pos);
     const rote = new THREE.Vector3(
         Math.random() * Math.PI,
         Math.random() * Math.PI,
         Math.random() * Math.PI,
     );
-    box.rotation.set(rote.x, rote.y, rote.z);
-    const edges = new THREE.EdgesGeometry(boxGeo, 0.2);
+    cell.rotation.set(rote.x, rote.y, rote.z);
+    const edges = new THREE.EdgesGeometry(bloodCellGeo, 0.01);
     const lineMat = new THREE.LineBasicMaterial({ color: 0x000000 });
-    const boxLines = new THREE.LineSegments(edges, lineMat)
-    boxLines.position.copy(pos);
-    boxLines.rotation.set(rote.x, rote.y, rote.z);
-    scene.add(box);
-    scene.add(boxLines)
+    const cellLines = new THREE.LineSegments(edges, lineMat)
+    cellLines.position.copy(pos);
+    cellLines.rotation.set(rote.x, rote.y, rote.z);
+    scene.add(cell);
+    scene.add(cellLines)
 }
 
 // Set Light
