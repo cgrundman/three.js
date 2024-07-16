@@ -42,3 +42,9 @@ The third project is the most ambitious yet. This project animates camera mothio
 The fourth project showcases how to transition between scenes smoothly in three.js. The scenes are filled with Icosahedrons and transition between wireframe and mesh bodys using three different transitions from 3 different images.
 
 <img src="https://github.com/cgrundman/three.js/blob/main/images/transitions.gif" alt="transitions" width="300"/>
+
+## 05 - Rapier
+
+The fifth project showcases an implementation of Rapier into a three.js project. This is a package to incorporate a physics ingine into three.js apps.
+
+<img src="https://github.com/cgrundman/three.js/blob/main/images/rapier.gif" alt="rapier" width="300"/>
