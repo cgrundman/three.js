@@ -36,3 +36,9 @@ The second project builds upon the first to render an Earth. The project uses me
 The third project is the most ambitious yet. This project animates camera mothion along a path through a tube to apear to look like a wormhole. The path is imported and is what the camera travel path, viewing angle, and the tube. The blood cells are also positioned randomly along the path. The shape is a torus, a better geometry to be used later.
 
 <img src="https://github.com/cgrundman/three.js/blob/main/images/wireframe_wormhole.gif" alt="Wireframe Wormhole" width="300"/>
+
+## 04 - Transitions
+
+The fourth project showcases how to transition between scenes smoothly in three.js. The scenes are filled with Icosahedrons and transition between wireframe and mesh bodys using three different transitions from 3 different images.
+
+<img src="https://github.com/cgrundman/three.js/blob/main/images/transitions.gif" alt="transitions" width="300"/>
