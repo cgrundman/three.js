@@ -30,3 +30,9 @@ The first project is an instroduction to the key components of Three.js. The mai
 The second project builds upon the first to render an Earth. The project uses mesh layering, as well as importing custom functions for the starfield and the glow around the planet. Special thanks to [Pixel Planet Imporium](https://planetpixelemporium.com/) for the base images used for the meshes. 
 
 <img src="https://github.com/cgrundman/three.js/blob/main/images/earth.gif" alt="Earth Project" width="300"/>
+
+## 03 - Wireframe Wormhole
+
+The third project is the most ambitious yet. This project animates camera mothion along a path through a tube to apear to look like a wormhole. The path is imported and is what the camera travel path, viewing angle, and the tube. The blood cells are also positioned randomly along the path. The shape is a torus, a better geometry to be used later.
+
+<img src="https://github.com/cgrundman/three.js/blob/main/images/wireframe_wormhole.gif" alt="Wireframe Wormhole" width="300"/>
